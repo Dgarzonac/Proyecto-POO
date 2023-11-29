@@ -22,6 +22,104 @@ public String trabajo(){
   return "Mesero, es quien se encarga de atender y servir a la clientela.";
 }
 ```
+### Sobrecarga de Constructores:
+
+La sobrecarga de constructores se implementa en varias clases, permitiendo diferentes formas de inicialización. Ejemplo en Restaurante.java:
+
+```
+public Restaurante () {
+    this(new ArrayList<>());
+}
+
+public Restaurante(List<Mesa> listadoMesas) {
+    this(listadoMesas, new ArrayList<>());
+}
+
+```
+###  Encapsulamiento:
+
+La mayoría de los atributos de las clases son privados, siguiendo los principios de encapsulamiento. Ejemplo en Mesa.java:
+
+```
+En Turno.java: public enum Tipo {SEMANA, SABADO, DOMINGO}
+En Plato.java: public static final int TIEMPO_DOMICILIO_MINUTOS = 30;
+En Material.java: public enum Tipo {TOMATES,CEBOLLAS,PAPAS,ACEITES,VINOS,QUESOS,CHAMPINONES,RES,PESCADOS,CERDOS,POLLOS,PANES,AJOS,ESPECIAS,HUEVOS,ATUN,CUCHARAS,TENEDORES,PLATOS,VASOS};
+En Persona.java: protected String nombre; protected Long cedula;
+En Empleado.java: protected ArrayList<Turno> turnos;
+Y todos los métodos son public, por ejemplo:
+En Mesa.java: 
+public String resumenMesa () {
+        return "Capacidad de la mesa: "+this.getCapacidad()+"\nNúmero de la mesa: "+this.getNumeroMesa();
+}
+A excepción de:
+En Restaurante.java:
+private Turno turnoActual() {
+		for(Turno turno : this.turnos)
+		{
+			if(!turno.isCobrado()){
+				return turno;}}
+		return null;
+		}
+
+```
+### Ligadura Dinámica:
+
+Ejemplos de ligadura dinámica se observan en Administrador.java al invocar el método detallesEmpleado() de la clase Empleado.java.
+```
+En Administrador.java:
+System.out.print(restaurante.getEmpleados().get(indice).detallesEmpleado()); (línea 363)
+System.out.print(restaurante.getAspEmpleados().get(indice1).detallesEmpleado()); (línea 381)
+
+Que invocan el método detallesEmpleado() de “Empleado.java”:
+public String detallesEmpleado(){
+	return 
+	 "Nombre: " + this.getNombre()+
+	  "\nCedula: " + this.getCedula()+
+	  "\nPuesto: " + this.getPuesto()+
+	  "\nTurno: " + this.getTurnos().get(0).getTipo()+
+	  "\nSalario: " + this.getTurnos().get(0).getSalario()+		  
+	  "\n"+this.puntuacion()+
+	  "\n"+this.trabajo()+"\n";
+	  }
+Que invocan los métodos puntuación() y trabajo() sobrecargados en “Mesero.java”, “Domiciliario.java” y “Cocinero.java”, por ejemplo:
+  public String puntuacion(){
+    return "La puntacion del Mesero es: "+ this.getPuntuacion();
+  }
+  public String trabajo(){
+    return "Mesero, es quien se encarga de atender y servir a la clientela.";
+  }
+
+```
+###  Sobrecarga de constructores:
+
+Aqui se da unis breves ejemplos de sobrecarga de constructores que se implkemento en el proyecto:
+
+```
+En Restaurante.java: 
+public Restaurante () {
+    	this(new ArrayList<>());
+    }
+public Restaurante(List<Mesa> listadoMesas) {
+        this(listadoMesas, new ArrayList<>());
+    }
+public Restaurante (List<Mesa> listadoMesas, List<Empleado> listadoEmpleados) {
+        this(listadoMesas, listadoEmpleados, new ArrayList<>());
+    }
+public Restaurante (List<Mesa> listadoMesas, List<Empleado> listadoEmpleados, List<Cliente> listadoClientes) {
+        this(listadoMesas, listadoEmpleados, listadoClientes, new HashMap<>());
+    }
+public Restaurante (List<Mesa> listadoMesas, List<Empleado> listadoEmpleados, List<Cliente> listadoClientes, Map<Tipo, Material> inventario) {
+        this.listadoMesas = listadoMesas;
+        this.listadoEmpleados = listadoEmpleados;
+        this.listadoClientes = listadoClientes;
+        this.inventario = inventario;
+        this.numMesas += contadorListado(listadoMesas);
+        this.numEmpleados += contadorListado(listadoEmpleados);
+        this.numClientes += contadorListado(listadoEmpleados);
+    }
+
+
+```
 
 # Funcionalidades
 
