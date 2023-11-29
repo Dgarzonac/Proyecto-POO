@@ -12,14 +12,16 @@ La clase abstracta Persona.java sirve como base para las clases Cliente.java y E
 
 Se realiza sobrecarga de métodos en varias clases, como en Mesero.java, Domiciliario.java y Cocinero.java. Ejemplo:
 
-```java
+```
+java
 public String puntuacion(){
   return "La puntacion del Mesero es: "+ this.getPuntuacion();
 }
 
 public String trabajo(){
   return "Mesero, es quien se encarga de atender y servir a la clientela.";
-}```
+}
+```
 
 # Funcionalidades
 
