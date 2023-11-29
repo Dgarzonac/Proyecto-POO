@@ -19,7 +19,7 @@ public String puntuacion(){
 
 public String trabajo(){
   return "Mesero, es quien se encarga de atender y servir a la clientela.";
-}
+}```
 
 # Funcionalidades
 
